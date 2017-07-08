@@ -98,6 +98,7 @@ static BOOL active_fourway[20] = {
 
 - (void)notifyEvent:(IOHIDValueRef)value {
     long parsed = IOHIDValueGetIntegerValue(value);
+    if ( parsed > _max ) return;
     long size = _max;
     // Skip first row in table if 0 is not neutral.
     if (size & 1) {

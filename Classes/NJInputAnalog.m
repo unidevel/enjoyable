@@ -5,7 +5,7 @@
 //  Created by Sam McCall on 5/05/09.
 //
 
-#define DEAD_ZONE 0.3
+#define DEAD_ZONE 0.5
 
 #import "NJInputAnalog.h"
 

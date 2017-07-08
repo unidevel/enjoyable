@@ -26,7 +26,7 @@
     NJOutputMouseMove *output = [[NJOutputMouseMove alloc] init];
     output.axis = [serialization[@"axis"] intValue];
     output.speed = [serialization[@"speed"] floatValue];
-    if (!output.speed)
+    if (output.speed==0)
         output.speed = 10;
     return output;
 }
@@ -38,7 +38,7 @@
 #define CLAMP(a, l, h) MIN(h, MAX(a, l))
 
 - (BOOL)update:(NJInputController *)ic {
-    if (self.magnitude < 0.05)
+    if (self.magnitude < 0.5)
         return NO; // dead zone
     
     CGSize size = NSScreen.mainScreen.frame.size;
