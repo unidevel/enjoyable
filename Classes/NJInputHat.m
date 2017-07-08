@@ -98,13 +98,13 @@ static BOOL active_fourway[20] = {
 
 - (void)notifyEvent:(IOHIDValueRef)value {
     long parsed = IOHIDValueGetIntegerValue(value);
-    if ( parsed > _max ) return;
     long size = _max;
     // Skip first row in table if 0 is not neutral.
     if (size & 1) {
         parsed++;
         size++;
     }
+    if ( parsed > _max ) parsed = 0;
     BOOL *activechildren = (size == 8) ? active_eightway : active_fourway;
     for (unsigned i = 0; i < 4; i++) {
         BOOL active = activechildren[parsed * 4 + i];
